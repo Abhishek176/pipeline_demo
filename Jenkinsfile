@@ -1,9 +1,16 @@
 pipeline{
     agent any
+    environment {
+        NAME = "Abhishek"
+        version = "1.0.0"
+    }
     stages{
         stage("Build"){
             steps{
                 echo "Building the application"
+                echo "NAME ${NAME}"
+                echo "NAME ${version}"
+                echo "Build No ${BUILD_NUMBER}"
             }
             post{
                 always{
