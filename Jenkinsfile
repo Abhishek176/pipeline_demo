@@ -39,6 +39,23 @@ pipeline{
                 echo "Testing the application"
             }
         }
+        parallel {
+                stage('Branch A') {
+                    agent {
+                        label "for-branch-a"
+                    }
+                    steps {
+                        echo "On Branch A"
+                    }
+                }
+                stage('Branch B') {
+                    agent {
+                        label "for-branch-b"
+                    }
+                    steps {
+                        echo "On Branch B"
+                    }
+                }
         stage("Deploy"){
             steps{
                 echo "Deploying the application"
