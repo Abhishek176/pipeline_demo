@@ -56,6 +56,7 @@ pipeline{
                         echo "On Branch B"
                     }
                 }
+        }
         stage("Deploy"){
             steps{
                 echo "Deploying the application"
