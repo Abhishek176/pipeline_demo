@@ -5,11 +5,21 @@ pipeline{
             steps{
                 echo "Building the application"
             }
+            post{
+                always{
+                    echo "========always========"
+                }
+                success{
+                    echo "========A executed successfully========"
+                }
+                failure{
+                    echo "========A execution failed========"
+                }
+            }
         }
         stage("Test"){
             steps{
                 echo "Testing the application"
-                sh "touch1 a.txt"
             }
         }
         stage("Deploy"){
