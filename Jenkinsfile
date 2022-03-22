@@ -35,9 +35,6 @@ pipeline{
             }
         }
         stage("Test"){
-            steps{
-                echo "Testing the application"
-            }
             parallel {
                 stage('Branch A') {
                     steps {
