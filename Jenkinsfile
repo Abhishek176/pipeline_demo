@@ -1,5 +1,11 @@
 pipeline{
     agent any
+    parameters {
+        string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '')
+        booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
+        choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'A secret password')
+    }
     environment {
         NAME = "Abhishek"
         version = "1.0.0"
@@ -9,8 +15,12 @@ pipeline{
             steps{
                 echo "Building the application"
                 echo "NAME ${NAME}"
-                echo "NAME ${version}"
+                echo "Version ${version}"
                 echo "Build No ${BUILD_NUMBER}"
+                echo "${params.DEPLOY_ENV}"
+                echo "Choice: ${params.CHOICES}"
+                echo "Choice: ${params.DEBUG_BUILD}"
+                echo "Choice: ${params.PASSWORD}"
             }
             post{
                 always{
