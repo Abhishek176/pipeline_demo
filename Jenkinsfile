@@ -9,6 +9,7 @@ pipeline{
         stage("Test"){
             steps{
                 echo "Testing the application"
+                sh "touch1 a.txt"
             }
         }
         stage("Deploy"){
