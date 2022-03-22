@@ -2,7 +2,7 @@ pipeline{
     agent any
     parameters {
         string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '')
-        booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
+        booleanParam(name: 'DEBUG_BUILD', defaultValue: false, description: '')
         choice(name: 'CHOICES', choices: ['one', 'two', 'three'], description: '')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'A secret password')
     }
@@ -49,6 +49,11 @@ pipeline{
             }
         }
         stage("Deploy"){
+            when {
+                expression {
+                    params.DEBUG_BUILD == "true"
+                }
+            }
             steps{
                 echo "Deploying the application"
             }
